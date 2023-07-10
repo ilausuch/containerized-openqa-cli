@@ -5,12 +5,18 @@ if [ "$#" -lt 3 ]; then
   echo "Missing arguments:"
   echo "  <git_repo>   : Git repository URL"
   echo "  <branch>     : Git branch"
-  echo "  <parent_id>  : Parent ID"
+  echo "  <job>        : Job URL"
   echo "  [extra arguments]: Any number of additional arguments"
   exit 1
 fi
 
-source="http://openqa.suse.de"
-dest="http://openqa.suse.de"
+repo="$1"
+[[ ! $repo =~ \.git$ ]] && repo="${repo.git}"
 
-./run_clone_job.sh "$source" "$dest" "$3" "$1" "$2" "${@:4}"
+host="${3%%/t*}"
+job="${3##*/}"
+
+source="$host"
+dest="$host"
+
+./run_clone_job.sh "$source" "$dest" "$job" "$repo" "$2" "${@:4}"
