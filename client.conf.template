@@ -1,0 +1,7 @@
+[openqa.opensuse.org]
+key = <YOUR_KEY>
+secret = <YOUR_SECRET>
+
+[openqa.suse.de]
+key = <YOUR_KEY>
+secret = <YOUR_SECRET>
